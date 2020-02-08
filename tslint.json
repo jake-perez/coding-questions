@@ -1,0 +1,10 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "object-literal-sort-keys": false
+  },
+  "linterOptions": {
+    "exclude": ["node_modules", "**/__data__/*", "**/__tests__/*"]
+  }
+}

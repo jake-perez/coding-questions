@@ -1,0 +1,56 @@
+{
+  "name": "ls",
+  "version": "0.1.0",
+  "description": "Coding Questions(Typescript)",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npx jest",
+    "test:watch": "npx jest --watch",
+    "test:ci": "CI=true jest --collect-coverage --ci",
+    "lint": "npx tslint -p tsconfig.json",
+    "lint:fix": "npx tslint -p tsconfig.json --fix",
+    "clean": "rm -rf dist",
+    "type-check": "npx tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run clean && npm run type-check && npm run lint && npm run test:ci && npm run build:types && npm run build:js",
+    "build:types": "npx tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir dist --extensions \".ts\" --source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jake-containerstore/coding-questions.git"
+  },
+  "keywords": [
+    "typescript",
+    "algorithms"
+  ],
+  "author": "Jake Perez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jake-containerstore/coding-questions/issues"
+  },
+  "homepage": "https://github.com/jake-containerstore/coding-questions#readme",
+  "dependencies": {
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-numeric-separator": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^13.1.7",
+    "husky": "^3.1.0",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "stop-only": "^3.1.0",
+    "ts-jest": "^24.2.0",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.2"
+  }
+}
