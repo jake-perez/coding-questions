@@ -20,24 +20,17 @@ export default class QueueFromStacks<T> {
     this.enqueueStack.push(value);
   };
 
-  dequeue = (): T | Error => {
-    if (this.dequeueStack.length === 0) {
-      while (this.enqueueStack.length) {
-        const value: T | undefined = this.enqueueStack.pop();
-        if (value) {
-          this.dequeueStack.push(value);
-        }
-      }
-      const value: T | undefined = this.dequeueStack.pop();
-      if (value !== undefined) {
-        return value;
-      }
-    } else {
-      const value: T | undefined = this.dequeueStack.pop();
-      if (value !== undefined) {
-        return value;
-      }
+  dequeue = (): T => {
+    if (this.dequeueStack.length > 0) {
+      return this.dequeueStack.pop()!;
     }
-    throw new Error('Empty Queue');
+    if (this.enqueueStack.length === 0) {
+      throw new Error('Empty Queue');
+    } else {
+      while (this.enqueueStack.length) {
+        this.dequeueStack.push(this.enqueueStack.pop()!);
+      }
+      return this.dequeueStack.pop()!;
+    }
   };
 }
