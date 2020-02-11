@@ -55,7 +55,7 @@ const isPrime = (num: number): boolean => {
 };
 
 const lexicalSort = (a: number[], b: number[]): number => {
-  if (a[0] === b[0] && a[1] < b[1]) {
+  if (a[0] <= b[0]) {
     return -1;
   } else {
     return 1;
